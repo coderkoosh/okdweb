@@ -3,212 +3,145 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>OKD WEB — Vi bygger hemsidor som sticker ut</title>
-<meta name="description" content="OKD WEB designar och bygger moderna, snabba och snygga hemsidor åt företag som vill synas på riktigt. Handkodat, responsivt och byggt för att konvertera." />
-<meta name="theme-color" content="#1C1C1C" />
+<title>OKD WEB — Hemsidor för företag som vill synas</title>
+<meta name="description" content="OKD WEB designar och bygger moderna, snabba hemsidor åt företag. Handkodat från grunden. Enkel sida från 4 000 kr, avancerad från 8 000 kr." />
+<meta name="theme-color" content="#08090a" />
 <link rel="icon" href="O.png" />
 <link rel="apple-touch-icon" href="O.png" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="OKD WEB — Vi bygger hemsidor som sticker ut" />
-<meta property="og:description" content="Moderna, snabba och snygga hemsidor åt företag som vill synas på riktigt." />
+<meta property="og:title" content="OKD WEB — Hemsidor för företag som vill synas" />
+<meta property="og:description" content="Moderna, snabba hemsidor åt företag. Handkodat från grunden." />
 <meta property="og:image" content="O.png" />
 <meta property="og:url" content="https://okdweb.com" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="style.css" />
 
-<!-- Utan JavaScript ska innehållet fortfarande synas -->
 <noscript>
   <style>
     .reveal{ opacity:1 !important; transform:none !important; }
-    .hero-title .w{ opacity:1 !important; transform:none !important; animation:none !important; }
-    .bg-canvas, .cursor-glow, .progress{ display:none !important; }
-    .caret{ display:none !important; }
+    .bg-glow{ display:none !important; }
   </style>
 </noscript>
 </head>
 <body>
 
-<!-- scroll progress -->
-<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-
-<!-- cursor glow -->
-<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-<!-- animated background -->
-<canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
-<div class="grid-overlay" aria-hidden="true"></div>
-<div class="noise" aria-hidden="true"></div>
-
 <a href="#main" class="skip">Hoppa till innehåll</a>
 
-<!-- ================= NAV ================= -->
-<header class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hem" class="brand" aria-label="OKD WEB — till toppen">
-      <img src="O.png" alt="" class="brand-mark" width="40" height="40" />
-      <span class="brand-text">OKD<span class="brand-dim">WEB</span></span>
+<canvas id="bgGlow" class="bg-glow" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#top" class="brand" aria-label="OKD WEB">
+      <img src="O.png" alt="" class="brand-mark" width="26" height="26" />
+      <span class="brand-name">OKD WEB</span>
     </a>
 
-    <nav class="nav-links" aria-label="Huvudmeny">
+    <nav class="nav" aria-label="Huvudmeny">
       <a href="#tjanster">Tjänster</a>
       <a href="#arbete">Arbete</a>
-      <a href="#process">Process</a>
-      <a href="#om">Om oss</a>
-      <a href="#faq">FAQ</a>
+      <a href="#priser">Priser</a>
     </nav>
 
-    <div class="nav-cta">
-      <a href="#kontakt" class="btn btn-primary btn-sm magnetic">Starta ett projekt</a>
-      <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobileMenu">
+    <div class="header-actions">
+      <a href="#kontakt" class="btn btn-primary btn-sm">Starta ett projekt</a>
+      <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false" aria-controls="menu">
         <span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu" hidden>
+<div class="menu" id="menu" hidden>
   <a href="#tjanster">Tjänster</a>
   <a href="#arbete">Arbete</a>
-  <a href="#process">Process</a>
-  <a href="#om">Om oss</a>
-  <a href="#faq">FAQ</a>
+  <a href="#priser">Priser</a>
   <a href="#kontakt" class="btn btn-primary">Starta ett projekt</a>
 </div>
 
 <main id="main">
 
 <!-- ================= HERO ================= -->
-<section class="hero" id="hem">
+<section class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow reveal">
-      <span class="dot"></span>
-      <span id="scramble">Tillgängliga för nya projekt</span>
-    </div>
+    <a href="#arbete" class="pill reveal">
+      <span class="pill-tag">Nytt</span>
+      nilysentreprenad.com är live
+      <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+    </a>
 
-    <h1 class="hero-title">
-      <span class="line"><span class="w">Hemsidor</span> <span class="w">som</span></span>
-      <span class="line"><span class="w">rör</span> <span class="w">sig,</span> <span class="w">säljer</span></span>
-      <span class="line"><span class="w">och</span> <span class="w grad">sticker&nbsp;ut.</span></span>
-    </h1>
+    <h1 class="reveal">Hemsidor för företag<br />som vill synas</h1>
 
     <p class="hero-sub reveal">
-      OKD WEB designar och bygger moderna hemsidor åt företag som vill synas på riktigt.
-      Handkodat från grunden — snabbt, responsivt och byggt för att konvertera.
+      Vi designar och bygger moderna hemsidor, handkodade från grunden.
+      Snabba att ladda, snygga i mobilen och gjorda för att få fler att höra av sig.
     </p>
 
     <div class="hero-actions reveal">
-      <a href="#kontakt" class="btn btn-primary magnetic">
-        Starta ett projekt
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="#arbete" class="btn btn-ghost magnetic">Se vårt arbete</a>
+      <a href="#kontakt" class="btn btn-primary">Starta ett projekt</a>
+      <a href="#priser" class="btn btn-ghost">Se priser</a>
     </div>
 
-    <!-- floating code window -->
-    <div class="code-card reveal" data-tilt>
-      <div class="code-bar">
-        <span class="cd cd-r"></span><span class="cd cd-y"></span><span class="cd cd-g"></span>
-        <span class="code-file">okdweb.js</span>
+    <div class="hero-visual reveal">
+      <div class="window">
+        <div class="window-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <div class="window-url">okdweb.com</div>
+        </div>
+        <div class="window-body">
+          <div class="w-side">
+            <i class="w-chip"></i><i></i><i></i><i></i>
+          </div>
+          <div class="w-main">
+            <div class="w-h"></div>
+            <div class="w-p"></div>
+            <div class="w-p short"></div>
+            <div class="w-cards"><i></i><i></i><i></i></div>
+          </div>
+        </div>
       </div>
-      <pre class="code-body"><code id="typeTarget"></code><span class="caret"></span></pre>
-      <div class="code-glow" aria-hidden="true"></div>
-    </div>
-
-    <div class="scroll-hint reveal" aria-hidden="true">
-      <span>Scrolla</span>
-      <div class="mouse"><i></i></div>
     </div>
   </div>
 </section>
 
-<!-- ================= MARQUEE ================= -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Webbdesign</span><i class="star">✳</i>
-    <span>Utveckling</span><i class="star">✳</i>
-    <span>Animation</span><i class="star">✳</i>
-    <span>SEO</span><i class="star">✳</i>
-    <span>Responsivt</span><i class="star">✳</i>
-    <span>Prestanda</span><i class="star">✳</i>
-    <span>Identitet</span><i class="star">✳</i>
-    <span>Webbdesign</span><i class="star">✳</i>
-    <span>Utveckling</span><i class="star">✳</i>
-    <span>Animation</span><i class="star">✳</i>
-    <span>SEO</span><i class="star">✳</i>
-    <span>Responsivt</span><i class="star">✳</i>
-    <span>Prestanda</span><i class="star">✳</i>
-    <span>Identitet</span><i class="star">✳</i>
-  </div>
-</div>
-
 <!-- ================= TJÄNSTER ================= -->
 <section class="section" id="tjanster">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag reveal">Tjänster</span>
-      <h2 class="sec-title reveal">Allt du behöver för att<br />finnas på webben.</h2>
-      <p class="sec-sub reveal">Från första skiss till lanserad sida. Du behöver inte kunna något om kod — det är vårt jobb.</p>
-    </div>
+    <header class="sec-head reveal">
+      <h2>Vad du får</h2>
+      <p>Hela vägen från tom sida till något som ligger live på din egen domän.</p>
+    </header>
 
-    <div class="cards">
-      <article class="card reveal" data-tilt style="--c:#FFFFFF">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg>
+    <div class="grid-3">
+      <article class="card reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 9v12"/></svg>
         </div>
-        <h3>Webbdesign</h3>
-        <p>Vi designar sidan i Figma innan en enda rad kod skrivs. Du ser exakt hur allt kommer se ut — och får tycka till.</p>
-        <ul class="mini"><li>Design i Figma</li><li>Egen visuell identitet</li><li>UX som guidar besökaren</li></ul>
+        <h3>Design</h3>
+        <p>Du ser sidan i Figma innan en rad kod skrivs, och får ändra tills den känns rätt. Ingen färdig mall som tusen andra använder.</p>
       </article>
 
-      <article class="card reveal" data-tilt style="--c:#F4F3EE">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6M14 4l-4 16"/></svg>
+      <article class="card reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
         </div>
         <h3>Utveckling</h3>
-        <p>Handkodad HTML, CSS och JavaScript. Inga tunga mallar som gör sidan seg — bara ren kod som laddar direkt.</p>
-        <ul class="mini"><li>Handkodat från grunden</li><li>Snabb laddning</li><li>Ren, läsbar kod</li></ul>
+        <p>Handkodad HTML, CSS och JavaScript. Sidan laddar direkt och ser lika bra ut i mobilen som på en stor skärm.</p>
       </article>
 
-      <article class="card reveal" data-tilt style="--c:#DCDBD5">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg>
+      <article class="card reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18a15 15 0 010-18"/></svg>
         </div>
-        <h3>Mobilanpassat</h3>
-        <p>Mer än hälften av dina besökare kommer från mobilen. Vi bygger för mobilen först och skalar upp därifrån.</p>
-        <ul class="mini"><li>Mobil, surfplatta, dator</li><li>Testat på riktiga enheter</li><li>Touchvänligt</li></ul>
-      </article>
-
-      <article class="card reveal" data-tilt style="--c:#C2C1BB">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        </div>
-        <h3>SEO &amp; synlighet</h3>
-        <p>Sidan byggs så att Google förstår den. Rubriker, metadata, laddtid och struktur — allt på plats från start.</p>
-        <ul class="mini"><li>Teknisk SEO</li><li>Metadata &amp; delningsbilder</li><li>Snabb = bättre ranking</li></ul>
-      </article>
-
-      <article class="card reveal" data-tilt style="--c:#A8A7A1">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
-        </div>
-        <h3>Animation</h3>
-        <p>Rörelse som betyder något. Subtila övergångar och effekter som gör sidan levande utan att stå i vägen.</p>
-        <ul class="mini"><li>Scrolleffekter</li><li>Mikrointeraktioner</li><li>Respekterar reducerad rörelse</li></ul>
-      </article>
-
-      <article class="card reveal" data-tilt style="--c:#8E8D88">
-        <div class="card-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M3 12h18M12 3a14 14 0 000 18a14 14 0 000-18"/></svg>
-        </div>
-        <h3>Domän &amp; drift</h3>
-        <p>Vi hjälper till med domän, hosting och SSL. Sidan hamnar online — och vi finns kvar efteråt om något behöver ändras.</p>
-        <ul class="mini"><li>Domän &amp; hosting</li><li>SSL-certifikat</li><li>Support efter lansering</li></ul>
+        <h3>Domän &amp; SEO</h3>
+        <p>Vi kopplar domänen, sätter upp SSL och ser till att Google förstår sidan. Efter lansering finns vi kvar för ändringar.</p>
       </article>
     </div>
   </div>
@@ -217,184 +150,76 @@
 <!-- ================= ARBETE ================= -->
 <section class="section" id="arbete">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag reveal">Arbete</span>
-      <h2 class="sec-title reveal">Vårt första projekt.<br />Ditt kan bli nästa.</h2>
-      <p class="sec-sub reveal">Vi är ett ungt företag och är öppna med det. Vi har levererat ett skarpt projekt — och letar aktivt efter fler.</p>
-    </div>
+    <header class="sec-head reveal">
+      <h2>Arbete</h2>
+      <p>Vi är nystartade och öppna med det — ett skarpt projekt levererat, och plats för fler.</p>
+    </header>
 
-    <a href="https://nilysentreprenad.com" target="_blank" rel="noopener" class="project reveal" data-tilt>
-      <div class="project-media" aria-hidden="true">
-        <div class="browser">
-          <div class="browser-bar"><span></span><span></span><span></span><em>nilysentreprenad.com</em></div>
-          <div class="browser-view">
-            <div class="bv-blob b1"></div>
-            <div class="bv-blob b2"></div>
-            <div class="bv-line w70"></div>
-            <div class="bv-line w45"></div>
-            <div class="bv-line w55 dim"></div>
-            <div class="bv-row"><i></i><i></i><i></i></div>
-          </div>
+    <a href="https://nilysentreprenad.com" target="_blank" rel="noopener" class="work reveal">
+      <div class="work-top">
+        <div>
+          <h3>Nilys Entreprenad</h3>
+          <span class="work-meta">Entreprenad · Design &amp; utveckling</span>
         </div>
-      </div>
-
-      <div class="project-body">
-        <div class="project-tags">
-          <span>Entreprenad</span><span>Webbdesign</span><span>Utveckling</span>
-        </div>
-        <h3>Nilys Entreprenad</h3>
-        <p>
-          En ren och förtroendeingivande hemsida åt ett entreprenadföretag. Fokus på att visa
-          tjänsterna tydligt och göra det enkelt att ta kontakt — utan onödigt krångel.
-        </p>
-        <span class="project-link">
-          Besök nilysentreprenad.com
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        <span class="work-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </span>
       </div>
+      <p>En ren och förtroendeingivande sida åt ett entreprenadföretag, med tjänsterna tydligt uppradade och en enkel väg till kontakt.</p>
+      <span class="work-link">nilysentreprenad.com</span>
     </a>
-
-    <div class="next-slot reveal">
-      <div class="next-plus" aria-hidden="true">+</div>
-      <div>
-        <h3>Ditt projekt här</h3>
-        <p>Vi har plats för nya kunder just nu och lägger full tid på varje projekt. Hör av dig så tar vi ett förutsättningslöst snack.</p>
-      </div>
-      <a href="#kontakt" class="btn btn-ghost magnetic">Ta första steget</a>
-    </div>
   </div>
 </section>
 
-<!-- ================= PROCESS ================= -->
-<section class="section" id="process">
+<!-- ================= PRISER ================= -->
+<section class="section" id="priser">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag reveal">Process</span>
-      <h2 class="sec-title reveal">Fyra steg från idé<br />till lanserad sida.</h2>
-      <p class="sec-sub reveal">Inget snack om tekniska detaljer du inte bad om. Du berättar vad du vill ha — vi sköter resten.</p>
+    <header class="sec-head reveal">
+      <h2>Priser</h2>
+      <p>Riktmärken, inte fasta priser. Vad din sida landar på beror på vad den faktiskt ska göra — du får en offert innan vi börjar.</p>
+    </header>
+
+    <div class="grid-2">
+      <article class="price reveal">
+        <span class="price-label">Enkel hemsida</span>
+        <div class="price-amount">Från <b>4 000 kr</b></div>
+        <p class="price-desc">En presentationssida som gör jobbet: berättar vad du gör och gör det lätt att höra av sig.</p>
+        <ul class="list">
+          <li>En sida med några sektioner</li>
+          <li>Anpassad för mobil och dator</li>
+          <li>Kontaktformulär</li>
+          <li>Hjälp med domän och publicering</li>
+        </ul>
+      </article>
+
+      <article class="price featured reveal">
+        <span class="price-label">Modern &amp; avancerad</span>
+        <div class="price-amount">Från <b>8 000 kr</b></div>
+        <p class="price-desc">När sidan ska sticka ut lite mer — fler sidor, rörelse och en design byggd helt runt ditt företag.</p>
+        <ul class="list">
+          <li>Flera undersidor</li>
+          <li>Egen design och animationer</li>
+          <li>SEO och prestandaoptimering</li>
+          <li>Möjlighet att ändra innehåll själv</li>
+        </ul>
+      </article>
     </div>
 
-    <ol class="steps">
-      <li class="step reveal" style="--c:#FFFFFF">
-        <span class="step-n">01</span>
-        <h3>Samtal</h3>
-        <p>Vi pratar om ditt företag, dina kunder och vad sidan ska göra för dig. Kostnadsfritt och utan förpliktelser.</p>
-      </li>
-      <li class="step reveal" style="--c:#DCDBD5">
-        <span class="step-n">02</span>
-        <h3>Design</h3>
-        <p>Du får se en design i Figma innan vi bygger. Vi justerar tills du är nöjd — det är billigare att ändra en skiss än en färdig sida.</p>
-      </li>
-      <li class="step reveal" style="--c:#B8B7B1">
-        <span class="step-n">03</span>
-        <h3>Utveckling</h3>
-        <p>Designen blir en riktig hemsida. Handkodad, snabb och testad i mobil, surfplatta och dator.</p>
-      </li>
-      <li class="step reveal" style="--c:#94938E">
-        <span class="step-n">04</span>
-        <h3>Lansering</h3>
-        <p>Vi kopplar domänen, ser till att allt fungerar och lägger upp sidan. Sen finns vi kvar om du behöver ändra något.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ================= OM / FAKTA ================= -->
-<section class="section" id="om">
-  <div class="wrap">
-    <div class="about">
-      <div class="about-left">
-        <span class="tag reveal">Om OKD WEB</span>
-        <h2 class="sec-title reveal">Litet företag.<br />Stor omsorg om detaljer.</h2>
-        <p class="lead reveal">
-          OKD WEB är ett svenskt webbyrå-projekt som bygger hemsidor åt små och medelstora företag.
-          Vi är nystartade — och det är faktiskt en fördel för dig: du blir inte kund nummer 400 i ett
-          ärendesystem, du pratar direkt med den som bygger din sida.
-        </p>
-        <p class="lead reveal">
-          Vi kodar allt för hand istället för att slänga ihop en mall. Det tar lite längre tid, men
-          resultatet blir snabbare, snyggare och helt anpassat efter dig. Vårt första kundprojekt,
-          <a href="https://nilysentreprenad.com" target="_blank" rel="noopener">nilysentreprenad.com</a>,
-          ligger live — och vi bygger gärna nästa.
-        </p>
-
-        <div class="about-points reveal">
-          <div><b>Handkodat</b><span>Ingen tung mall, ingen onödig kod.</span></div>
-          <div><b>Personligt</b><span>Du pratar direkt med utvecklaren.</span></div>
-          <div><b>Ärligt</b><span>Vi lovar inget vi inte kan hålla.</span></div>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="stat reveal" style="--c:#FFFFFF">
-          <b class="count" data-to="1">0</b>
-          <span>Lanserat kundprojekt</span>
-        </div>
-        <div class="stat reveal" style="--c:#DCDBD5">
-          <b class="count" data-to="100" data-suffix="%">0</b>
-          <span>Handskriven kod</span>
-        </div>
-        <div class="stat reveal" style="--c:#B8B7B1">
-          <b class="count" data-to="24" data-suffix="h">0</b>
-          <span>Svarstid på förfrågningar</span>
-        </div>
-        <div class="stat reveal" style="--c:#94938E">
-          <b class="count" data-to="0" data-text="∞">∞</b>
-          <span>Antal revideringar tills du är nöjd</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section" id="faq">
-  <div class="wrap narrow">
-    <div class="sec-head">
-      <span class="tag reveal">FAQ</span>
-      <h2 class="sec-title reveal">Vanliga frågor.</h2>
-    </div>
-
-    <div class="faq">
-      <details class="reveal">
-        <summary>Vad kostar en hemsida?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Det beror helt på omfattningen. En enkel presentationssida med några sektioner kostar betydligt mindre än en sida med bokning, flera undersidor och specialfunktioner. Vi ger alltid ett fast pris innan vi börjar — inga överraskningar på fakturan.</p></div>
-      </details>
-      <details class="reveal">
-        <summary>Hur lång tid tar det?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>En mindre hemsida tar oftast ett par veckor från första samtal till lansering. Det som brukar avgöra tempot är hur snabbt vi får text och bilder från dig — själva byggandet går fort.</p></div>
-      </details>
-      <details class="reveal">
-        <summary>Ni är nystartade — varför ska jag välja er?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Ärlig fråga, ärligt svar: för att du får vår fulla uppmärksamhet. Vi har få kunder just nu, vilket betyder att ditt projekt inte hamnar i kö. Du kan se resultatet av vårt arbete på nilysentreprenad.com, och du får se designen innan du binder dig till något.</p></div>
-      </details>
-      <details class="reveal">
-        <summary>Kan jag ändra innehållet själv efteråt?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Ja, om du vill. Vi kan bygga sidan med ett enkelt system där du själv byter text och bilder. Vill du hellre slippa, hör du bara av dig till oss så fixar vi ändringarna åt dig.</p></div>
-      </details>
-      <details class="reveal">
-        <summary>Hjälper ni till med domän och hosting?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Absolut. Vi hjälper dig att köpa domän, sätta upp hosting och SSL, och ser till att allt pekar rätt. Har du redan en domän flyttar vi över sidan utan att den ligger nere.</p></div>
-      </details>
-      <details class="reveal">
-        <summary>Vad händer efter att sidan är lanserad?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Vi försvinner inte. Hittar du något som ska justeras efter lansering fixar vi det. Vill du ha löpande hjälp med uppdateringar kan vi komma överens om ett enkelt underhållsupplägg.</p></div>
-      </details>
-    </div>
+    <p class="price-note reveal">
+      Har du något annat i tankarna? Hör av dig ändå — vi anpassar oss efter projektet och säger till direkt om vi tror att någon annan passar bättre.
+    </p>
   </div>
 </section>
 
 <!-- ================= KONTAKT ================= -->
-<section class="section cta-section" id="kontakt">
+<section class="section section-last" id="kontakt">
   <div class="wrap">
-    <div class="cta-card reveal">
-      <div class="cta-aurora" aria-hidden="true"></div>
-      <div class="cta-content">
-        <span class="tag">Kontakt</span>
-        <h2>Har du en idé?<br /><span class="grad">Vi bygger den.</span></h2>
-        <p>Berätta kort om ditt företag och vad du vill ha, så återkommer vi inom 24 timmar med förslag och prisbild. Det kostar ingenting att fråga.</p>
+    <div class="cta reveal">
+      <h2>Har du en idé?</h2>
+      <p>Berätta kort om ditt företag och vad du vill ha, så återkommer vi inom 24 timmar med förslag och pris.</p>
 
-        <form class="form" id="contactForm" novalidate>
+      <form class="form" id="contactForm" novalidate>
+        <div class="row">
           <div class="field">
             <label for="namn">Namn</label>
             <input id="namn" name="namn" type="text" placeholder="Ditt namn" required />
@@ -403,20 +228,17 @@
             <label for="epost">E-post</label>
             <input id="epost" name="epost" type="email" placeholder="du@företag.se" required />
           </div>
-          <div class="field full">
-            <label for="meddelande">Om projektet</label>
-            <textarea id="meddelande" name="meddelande" rows="4" placeholder="Vad gör ditt företag, och vad ska hemsidan göra för dig?" required></textarea>
-          </div>
-          <div class="form-foot full">
-            <button type="submit" class="btn btn-primary magnetic">
-              Skicka förfrågan
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-            <span class="form-alt">eller maila <a href="mailto:hej@okdweb.com">hej@okdweb.com</a></span>
-          </div>
-          <p class="form-msg" id="formMsg" role="status"></p>
-        </form>
-      </div>
+        </div>
+        <div class="field">
+          <label for="meddelande">Om projektet</label>
+          <textarea id="meddelande" name="meddelande" rows="3" placeholder="Vad gör ditt företag, och vad ska sidan göra för dig?" required></textarea>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-primary">Skicka förfrågan</button>
+          <span class="form-alt">eller maila <a href="mailto:hej@okdweb.com">hej@okdweb.com</a></span>
+        </div>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -426,34 +248,18 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="O.png" alt="OKD WEB" width="52" height="52" />
-        <p>Vi bygger moderna hemsidor åt företag som vill synas på riktigt.</p>
-      </div>
-      <div class="footer-cols">
-        <div>
-          <h4>Sidor</h4>
-          <a href="#tjanster">Tjänster</a>
-          <a href="#arbete">Arbete</a>
-          <a href="#process">Process</a>
-          <a href="#om">Om oss</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div>
-          <h4>Kontakt</h4>
-          <a href="mailto:hej@okdweb.com">hej@okdweb.com</a>
-          <a href="#kontakt">Starta ett projekt</a>
-        </div>
-        <div>
-          <h4>Arbete</h4>
-          <a href="https://nilysentreprenad.com" target="_blank" rel="noopener">nilysentreprenad.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bot">
-      <span>&copy; <span id="year">2026</span> OKD WEB. Alla rättigheter förbehållna.</span>
-      <span class="footer-made">Handkodad i Sverige</span>
+    <div class="footer-inner">
+      <a href="#top" class="brand">
+        <img src="O.png" alt="" class="brand-mark" width="24" height="24" />
+        <span class="brand-name">OKD WEB</span>
+      </a>
+      <nav class="footer-links" aria-label="Sidfot">
+        <a href="#tjanster">Tjänster</a>
+        <a href="#arbete">Arbete</a>
+        <a href="#priser">Priser</a>
+        <a href="mailto:hej@okdweb.com">hej@okdweb.com</a>
+      </nav>
+      <span class="footer-copy">&copy; <span id="year">2026</span> OKD WEB</span>
     </div>
   </div>
 </footer>
