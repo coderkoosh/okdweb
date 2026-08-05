@@ -42,11 +42,12 @@
     var ctx = canvas.getContext('2d');
     var W = 0, H = 0;
 
-    // accent (#7170ff), indigo (#5e6ad2) och en sval vit
+    // Svartvitt: rent vitt och den ljusgra tonen ur paletten.
+    // Vitt lyser starkare an kulor, sa alfat halls lagt.
     var GLOWS = [
-      { c: [113, 112, 255], rx: 0.22, ry: 0.12, r: 0.58, sp: 0.11, ph: 0.0, a: 0.16 },
-      { c: [94, 106, 210],  rx: 0.78, ry: 0.20, r: 0.52, sp: 0.09, ph: 2.1, a: 0.13 },
-      { c: [113, 112, 255], rx: 0.52, ry: 0.72, r: 0.62, sp: 0.07, ph: 4.2, a: 0.10 }
+      { c: [255, 255, 255], rx: 0.22, ry: 0.12, r: 0.58, sp: 0.11, ph: 0.0, a: 0.075 },
+      { c: [208, 214, 224], rx: 0.78, ry: 0.20, r: 0.52, sp: 0.09, ph: 2.1, a: 0.060 },
+      { c: [255, 255, 255], rx: 0.52, ry: 0.72, r: 0.62, sp: 0.07, ph: 4.2, a: 0.048 }
     ];
 
     function resize() {
@@ -198,7 +199,7 @@
         'E-post: ' + epost.value.trim() + '\n\n' +
         'Om projektet:\n' + meddelande.value.trim() + '\n';
 
-      window.location.href = 'mailto:hej@okdweb.com?subject=' +
+      window.location.href = 'mailto:okdweb@gmail.com?subject=' +
         encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
       formMsg.className = 'form-msg ok';
