@@ -1,5 +1,5 @@
 /* =========================================================
-   OKD WEB — style.css
+   OKD WEB, style.css
    Färgschemat är hämtat rakt av från Linears designtokens.
    ========================================================= */
 
@@ -45,7 +45,7 @@
   --rounded: 9999px;
 
   --page: 1024px;
-  --header-h: 84px;
+  --header-h: 104px;
 
   --ease: cubic-bezier(.25,.46,.45,.94);
 }
@@ -146,34 +146,34 @@ a{ color:inherit; text-decoration:none; }
 
 /* logga + ordmärke, samma placering som hos Linear */
 .brand{
-  display:flex; align-items:center; gap:11px;
+  display:flex; align-items:center; gap:10px;
   flex:0 0 auto;
 }
 /* Loggan ar transparent och har mycket luft runt ramen,
    sa den skalas upp utan ruta eller kant bakom. */
 .brand-mark{
-  width:44px; height:44px;
+  width:76px; height:76px;
   object-fit:contain;
   opacity:.94;
   transition:opacity .25s var(--ease);
 }
 .brand:hover .brand-mark{ opacity:1; }
 .brand-name{
-  font-size:19px;
+  font-size:27px;
   font-weight:600;
-  letter-spacing:-.02em;
+  letter-spacing:-.03em;
   color:var(--fg);
   white-space:nowrap;
 }
 
 .nav{
-  display:flex; align-items:center; gap:6px;
+  display:flex; align-items:center; gap:8px;
   margin-right:auto;
-  font-size:16px;
+  font-size:17px;
   font-weight:450;
 }
 .nav a{
-  padding:8px 12px;
+  padding:9px 14px;
   border-radius:var(--r6);
   color:var(--fg-3);
   transition:color .18s var(--ease);
@@ -258,7 +258,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .btn-ghost:hover{ background:var(--bg-tertiary); border-color:var(--line-strong); }
 
-.btn-sm{ height:38px; padding:0 16px; font-size:15px; border-radius:var(--r8); }
+.btn-sm{ height:42px; padding:0 20px; font-size:16px; border-radius:var(--r8); }
 
 /* =========================================================
    HERO
@@ -317,7 +317,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* fönstermockup */
 .hero-visual{ position:relative; }
-/* Toningen holls inom sin egen bredd — en bredare overlay
+/* Toningen holls inom sin egen bredd. En bredare overlay
    blaste upp dokumentets scrollWidth i mellanstora vyer. */
 .hero-visual::after{
   content:"";
@@ -656,51 +656,6 @@ a{ color:inherit; text-decoration:none; }
   letter-spacing:-.01em;
 }
 
-.form{ display:flex; flex-direction:column; gap:14px; }
-.row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-.field{ display:flex; flex-direction:column; gap:7px; }
-.field label{
-  font-size:.8125rem;
-  font-weight:500;
-  color:var(--fg-3);
-}
-.field input, .field textarea{
-  font-family:inherit;
-  font-size:.9375rem;
-  color:var(--fg);
-  background:var(--bg);
-  border:1px solid var(--line);
-  border-radius:var(--r8);
-  padding:10px 12px;
-  resize:vertical;
-  transition:border-color .18s var(--ease), box-shadow .18s var(--ease);
-}
-.field input::placeholder, .field textarea::placeholder{ color:var(--fg-4); }
-.field input:focus, .field textarea:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(255,255,255,.14);
-}
-/* felstat: streckad ram sa den gar att skilja fran fokus,
-   nu nar bada ar vita */
-.field input.invalid, .field textarea.invalid{
-  border-color:var(--fg);
-  border-style:dashed;
-  box-shadow:0 0 0 3px rgba(255,255,255,.14);
-}
-
-.form-foot{
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-  margin-top:4px;
-}
-.form-alt{ font-size:.875rem; color:var(--fg-3); }
-.form-alt a{ color:var(--fg-3); border-bottom:1px solid var(--line-strong); }
-.form-alt a:hover{ color:var(--fg); }
-
-.form-msg{ margin:0; font-size:.875rem; min-height:20px; }
-.form-msg.ok{ color:var(--accent); }
-.form-msg.err{ color:var(--fg); }
-
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -721,6 +676,31 @@ a{ color:inherit; text-decoration:none; }
 .footer-links a:hover{ color:var(--fg); }
 .footer-copy{ font-size:.875rem; color:var(--fg-3); }
 
+/* namnen bakom OKD, langst ner */
+.footer-meaning{
+  margin-top:28px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+.meaning{
+  display:flex; justify-content:center; flex-wrap:wrap;
+  gap:10px 28px;
+  margin:0 0 10px;
+  font-size:1.125rem;
+  color:var(--fg-3);
+  letter-spacing:-.015em;
+}
+.meaning b{
+  font-weight:600;
+  color:var(--fg);
+}
+.meaning-sub{
+  margin:0;
+  font-size:.875rem;
+  color:var(--fg-3);
+}
+
 /* =========================================================
    REVEAL
    ========================================================= */
@@ -737,6 +717,10 @@ a{ color:inherit; text-decoration:none; }
    ========================================================= */
 
 @media (max-width:860px){
+  /* baren far inte ata upp halva mobilskarmen */
+  :root{ --header-h: 78px; }
+  .brand-mark{ width:56px; height:56px; }
+  .brand-name{ font-size:22px; }
   .grid-3{ grid-template-columns:1fr; }
   .nav{ display:none; }
   .burger{ display:block; }
@@ -748,12 +732,15 @@ a{ color:inherit; text-decoration:none; }
 }
 
 @media (max-width:640px){
+  :root{ --header-h: 70px; }
+  .brand-mark{ width:48px; height:48px; }
+  .brand-name{ font-size:20px; }
   .grid-2{ grid-template-columns:1fr; }
-  .row{ grid-template-columns:1fr; }
   .contact-direct{ grid-template-columns:1fr; }
   .cta{ padding:32px 22px; }
   .window-body{ min-height:210px; }
   .footer-inner{ justify-content:flex-start; }
+  .meaning{ gap:8px 20px; font-size:1.0625rem; }
 }
 
 /* =========================================================

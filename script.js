@@ -1,5 +1,5 @@
 /* =========================================================
-   OKD WEB — script.js
+   OKD WEB, script.js
    Återhållsam rörelse i Linears anda: mjuka ljussken i
    bakgrunden, avslöjanden vid scroll och lite formulärlogik.
    ========================================================= */
@@ -10,7 +10,7 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------------------------------------------------------
-     1. HEADER — bakgrund när man scrollat
+     1. HEADER, bakgrund nar man scrollat
      --------------------------------------------------------- */
 
   var header = document.getElementById('header');
@@ -32,7 +32,7 @@
   onScroll();
 
   /* ---------------------------------------------------------
-     2. BAKGRUND — mjuka sken som driver långsamt
+     2. BAKGRUND, mjuka sken som driver langsamt
         Håller sig till accentfärgen; ska kännas, inte synas.
      --------------------------------------------------------- */
 
@@ -166,53 +166,7 @@
   }
 
   /* ---------------------------------------------------------
-     5. KONTAKTFORMULÄR
-        Ingen backend — öppnar e-postklienten med ifylld text.
-     --------------------------------------------------------- */
-
-  var form = document.getElementById('contactForm');
-  var formMsg = document.getElementById('formMsg');
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var namn = form.namn, epost = form.epost, meddelande = form.meddelande;
-      var ok = true;
-
-      [namn, epost, meddelande].forEach(function (fld) {
-        var valid = fld.value.trim().length > 0 &&
-          (fld.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fld.value.trim()));
-        fld.classList.toggle('invalid', !valid);
-        if (!valid) ok = false;
-      });
-
-      if (!ok) {
-        formMsg.className = 'form-msg err';
-        formMsg.textContent = 'Fyll i namn, en giltig e-postadress och en kort beskrivning.';
-        return;
-      }
-
-      var subject = 'Projektförfrågan från ' + namn.value.trim();
-      var body =
-        'Namn: ' + namn.value.trim() + '\n' +
-        'E-post: ' + epost.value.trim() + '\n\n' +
-        'Om projektet:\n' + meddelande.value.trim() + '\n';
-
-      window.location.href = 'mailto:okdweb@gmail.com?subject=' +
-        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-
-      formMsg.className = 'form-msg ok';
-      formMsg.textContent = 'Tack! Din e-postklient öppnas med meddelandet — tryck skicka så hör vi av oss.';
-    });
-
-    form.addEventListener('input', function (e) {
-      if (e.target.classList) e.target.classList.remove('invalid');
-    });
-  }
-
-  /* ---------------------------------------------------------
-     6. ÅRTAL
+     5. ÅRTAL
      --------------------------------------------------------- */
 
   var year = document.getElementById('year');
