@@ -52,13 +52,15 @@
     // musposition, normaliserad -1..1
     var mx = 0, my = 0, tmx = 0, tmy = 0;
 
+    // Monokrom palett: creme, vitt och grå toner.
+    // Variationen ligger i ljusstyrka, inte kulör.
     var BLOB_COLORS = [
-      [0, 173, 239],   // blå
-      [135, 79, 255],  // lila
-      [255, 82, 16],   // orange
-      [36, 203, 113],  // grön
-      [166, 177, 255], // periwinkle
-      [228, 255, 151]  // lime
+      [244, 243, 238], // creme
+      [255, 255, 255], // vitt
+      [220, 219, 213], // ljusgrå
+      [255, 255, 255], // vitt
+      [194, 193, 187], // grå
+      [244, 243, 238]  // creme
     ];
 
     var blobs = [];
@@ -121,9 +123,10 @@
       my += (tmy - my) * 0.045;
 
       var t = time * 0.00013;
-      // scrollen skjuter hela kompositionen uppåt och byter färgton
+      // scrollen skjuter hela kompositionen uppåt och klarnar upp den
       var scrollShift = scrollProgress * H * 0.85;
-      var hueRotate = scrollProgress * 360;
+      // 0 -> dämpat grått, 1 -> nästan vitt
+      var lift = scrollProgress;
 
       /* ---- färgklot (additiv blandning = klara färger) ---- */
       ctx.globalCompositeOperation = 'lighter';
@@ -150,7 +153,9 @@
         var r = b.r * (0.86 + Math.sin(t * 2.1 + b.phase) * 0.09 + scrollProgress * 0.14);
 
         var col = b.c;
-        var alpha = 0.16 + Math.sin(t * 1.9 + b.phase) * 0.045;
+        // vitt lyser betydligt starkare än mättade färger på mörk botten,
+        // så alfat hålls lågt — och stiger en aning när man scrollar
+        var alpha = 0.062 + Math.sin(t * 1.9 + b.phase) * 0.018 + lift * 0.03;
 
         var g = ctx.createRadialGradient(px, py, 0, px, py, r);
         g.addColorStop(0, 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha.toFixed(3) + ')');
@@ -195,10 +200,10 @@
           if (d2 > LINK_DIST * LINK_DIST) continue;
 
           var d = Math.sqrt(d2);
-          var o = (1 - d / LINK_DIST) * 0.3;
-          // hue följer scrollen -> färgerna vandrar när man scrollar
-          var hue = (200 + hueRotate + (na.sx / W) * 90) % 360;
-          ctx.strokeStyle = 'hsla(' + hue.toFixed(0) + ',95%,62%,' + o.toFixed(3) + ')';
+          // ljusstyrkan följer scrollen -> nätverket klarnar när man scrollar
+          var o = (1 - d / LINK_DIST) * (0.16 + lift * 0.22);
+          var li = 62 + lift * 30 + (na.sx / W) * 8;
+          ctx.strokeStyle = 'hsla(45,10%,' + li.toFixed(0) + '%,' + o.toFixed(3) + ')';
           ctx.beginPath();
           ctx.moveTo(na.sx, na.sy);
           ctx.lineTo(nb.sx, nb.sy);
@@ -209,8 +214,8 @@
       // punkter
       for (var k = 0; k < nodes.length; k++) {
         var q = nodes[k];
-        var h2 = (200 + hueRotate + (q.sy / H) * 110) % 360;
-        ctx.fillStyle = 'hsla(' + h2.toFixed(0) + ',95%,68%,' + (0.24 + q.depth * 0.3).toFixed(3) + ')';
+        var li2 = 70 + lift * 28 + q.depth * 6;
+        ctx.fillStyle = 'hsla(45,10%,' + li2.toFixed(0) + '%,' + (0.2 + q.depth * 0.28 + lift * 0.14).toFixed(3) + ')';
         ctx.beginPath();
         ctx.arc(q.sx, q.sy, q.r, 0, Math.PI * 2);
         ctx.fill();
