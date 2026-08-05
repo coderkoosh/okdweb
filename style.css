@@ -1,10 +1,4 @@
-/* =========================================================
-   OKD WEB, style.css
-   Färgschemat är hämtat rakt av från Linears designtokens.
-   ========================================================= */
-
 :root{
-  /* bakgrunder */
   --bg:            #08090a;
   --bg-marketing:  #010102;
   --bg-1:          #0f1011;
@@ -15,19 +9,16 @@
   --bg-quaternary: #28282c;
   --bg-translucent:#ffffff0d;
 
-  /* text */
   --fg:            #f7f8f8;
   --fg-2:          #d0d6e0;
   --fg-3:          #8a8f98;
   --fg-4:          #62666d;
 
-  /* linjer */
   --line:          #202122;
   --line-strong:   #37393a;
   --line-faint:    #18191a;
   --line-fainter:  #141515;
 
-  /* accent */
   --accent:        #f7f8f8;
   --accent-hover:  #ffffff;
   --accent-tint:   #232326;
@@ -95,10 +86,6 @@ a{ color:inherit; text-decoration:none; }
   padding:0 24px;
 }
 
-/* =========================================================
-   BAKGRUND
-   ========================================================= */
-
 .bg-glow{
   position:fixed;
   inset:0;
@@ -115,10 +102,6 @@ a{ color:inherit; text-decoration:none; }
   opacity:.028;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-
-/* =========================================================
-   HEADER
-   ========================================================= */
 
 .header{
   position:fixed;
@@ -144,13 +127,11 @@ a{ color:inherit; text-decoration:none; }
   display:flex; align-items:center; gap:32px;
 }
 
-/* logga + ordmärke, samma placering som hos Linear */
 .brand{
   display:flex; align-items:center; gap:10px;
   flex:0 0 auto;
 }
-/* Loggan ar transparent och har mycket luft runt ramen,
-   sa den skalas upp utan ruta eller kant bakom. */
+
 .brand-mark{
   width:76px; height:76px;
   object-fit:contain;
@@ -226,10 +207,6 @@ a{ color:inherit; text-decoration:none; }
 .menu a:hover{ color:var(--fg); }
 .menu .btn{ margin-top:10px; justify-content:center; }
 
-/* =========================================================
-   KNAPPAR
-   ========================================================= */
-
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:6px;
   font-family:inherit;
@@ -259,10 +236,6 @@ a{ color:inherit; text-decoration:none; }
 .btn-ghost:hover{ background:var(--bg-tertiary); border-color:var(--line-strong); }
 
 .btn-sm{ height:42px; padding:0 20px; font-size:16px; border-radius:var(--r8); }
-
-/* =========================================================
-   HERO
-   ========================================================= */
 
 .hero{
   padding:calc(var(--header-h) + 96px) 0 0;
@@ -315,10 +288,8 @@ a{ color:inherit; text-decoration:none; }
   margin-bottom:80px;
 }
 
-/* fönstermockup */
 .hero-visual{ position:relative; }
-/* Toningen holls inom sin egen bredd. En bredare overlay
-   blaste upp dokumentets scrollWidth i mellanstora vyer. */
+
 .hero-visual::after{
   content:"";
   position:absolute; left:0; right:0; bottom:-1px;
@@ -399,10 +370,6 @@ a{ color:inherit; text-decoration:none; }
   border-color:rgba(255,255,255,.16);
 }
 
-/* =========================================================
-   SEKTIONER
-   ========================================================= */
-
 .section{ padding:96px 0; }
 .section-last{ padding-bottom:112px; }
 
@@ -423,10 +390,6 @@ a{ color:inherit; text-decoration:none; }
 
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-
-/* =========================================================
-   KORT
-   ========================================================= */
 
 .card{
   padding:24px;
@@ -460,10 +423,6 @@ a{ color:inherit; text-decoration:none; }
   font-size:.9375rem;
   line-height:1.6;
 }
-
-/* =========================================================
-   ARBETE
-   ========================================================= */
 
 .work{
   display:block;
@@ -513,10 +472,6 @@ a{ color:inherit; text-decoration:none; }
   transition:color .2s var(--ease);
 }
 .work:hover .work-link{ color:var(--accent-hover); }
-
-/* =========================================================
-   PRISER
-   ========================================================= */
 
 .price{
   position:relative;
@@ -591,10 +546,6 @@ a{ color:inherit; text-decoration:none; }
   max-width:64ch;
 }
 
-/* =========================================================
-   KONTAKT
-   ========================================================= */
-
 .cta{
   border:1px solid var(--line);
   border-radius:var(--r16);
@@ -616,7 +567,6 @@ a{ color:inherit; text-decoration:none; }
   font-size:1rem;
 }
 
-/* direktkontakt ovanfor formularet */
 .contact-direct{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -656,10 +606,6 @@ a{ color:inherit; text-decoration:none; }
   letter-spacing:-.01em;
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
 .footer{
   border-top:1px solid var(--line);
   padding:28px 0;
@@ -676,7 +622,6 @@ a{ color:inherit; text-decoration:none; }
 .footer-links a:hover{ color:var(--fg); }
 .footer-copy{ font-size:.875rem; color:var(--fg-3); }
 
-/* namnen bakom OKD, langst ner */
 .footer-meaning{
   margin-top:28px;
   padding-top:28px;
@@ -701,10 +646,6 @@ a{ color:inherit; text-decoration:none; }
   color:var(--fg-3);
 }
 
-/* =========================================================
-   REVEAL
-   ========================================================= */
-
 .reveal{
   opacity:0;
   transform:translateY(12px);
@@ -712,12 +653,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .reveal.in{ opacity:1; transform:none; }
 
-/* =========================================================
-   RESPONSIVT
-   ========================================================= */
-
 @media (max-width:860px){
-  /* baren far inte ata upp halva mobilskarmen */
   :root{ --header-h: 78px; }
   .brand-mark{ width:56px; height:56px; }
   .brand-name{ font-size:22px; }
@@ -742,10 +678,6 @@ a{ color:inherit; text-decoration:none; }
   .footer-inner{ justify-content:flex-start; }
   .meaning{ gap:8px 20px; font-size:1.0625rem; }
 }
-
-/* =========================================================
-   REDUCERAD RÖRELSE
-   ========================================================= */
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{

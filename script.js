@@ -1,17 +1,7 @@
-/* =========================================================
-   OKD WEB, script.js
-   Återhållsam rörelse i Linears anda: mjuka ljussken i
-   bakgrunden, avslöjanden vid scroll och lite formulärlogik.
-   ========================================================= */
-
 (function () {
   'use strict';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------------------------------------------------------
-     1. HEADER, bakgrund nar man scrollat
-     --------------------------------------------------------- */
 
   var header = document.getElementById('header');
   var scrollProgress = 0;
@@ -31,19 +21,12 @@
   }, { passive: true });
   onScroll();
 
-  /* ---------------------------------------------------------
-     2. BAKGRUND, mjuka sken som driver langsamt
-        Håller sig till accentfärgen; ska kännas, inte synas.
-     --------------------------------------------------------- */
-
   var canvas = document.getElementById('bgGlow');
 
   if (canvas && !reduce) {
     var ctx = canvas.getContext('2d');
     var W = 0, H = 0;
 
-    // Svartvitt: rent vitt och den ljusgra tonen ur paletten.
-    // Vitt lyser starkare an kulor, sa alfat halls lagt.
     var GLOWS = [
       { c: [255, 255, 255], rx: 0.22, ry: 0.12, r: 0.58, sp: 0.11, ph: 0.0, a: 0.075 },
       { c: [208, 214, 224], rx: 0.78, ry: 0.20, r: 0.52, sp: 0.09, ph: 2.1, a: 0.060 },
@@ -68,7 +51,6 @@
       ctx.globalCompositeOperation = 'lighter';
 
       var t = time * 0.0001;
-      // skenen tonar ned en aning längre ned på sidan
       var fade = 1 - scrollProgress * 0.45;
 
       for (var i = 0; i < GLOWS.length; i++) {
@@ -107,10 +89,6 @@
     start();
   }
 
-  /* ---------------------------------------------------------
-     3. AVSLÖJANDEN VID SCROLL
-     --------------------------------------------------------- */
-
   var revealEls = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window && !reduce) {
@@ -133,10 +111,6 @@
   } else {
     Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('in'); });
   }
-
-  /* ---------------------------------------------------------
-     4. MOBILMENY
-     --------------------------------------------------------- */
 
   var burger = document.getElementById('burger');
   var menu = document.getElementById('menu');
@@ -165,14 +139,8 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     5. ÅRTAL
-     --------------------------------------------------------- */
-
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
-
-  /* --------------------------------------------------------- */
 
   function debounce(fn, wait) {
     var t;
